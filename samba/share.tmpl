@@ -1,6 +1,10 @@
 [${VOLUME_NAME}]
   comment = ${VOLUME_NAME} volume from ${CONTAINER}
   read only = ${READONLY}
+  available = yes
+  public = yes
+  valid users = ${USER},root,guest
+  browsable = yes
   locking = no
   path = ${VOLUME}
   force user = ${USER}

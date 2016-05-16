@@ -22,4 +22,8 @@ RUN sed --in-place 's/CONTAINER=/export CONTAINER=/g' /setup.sh
 RUN sed --in-place 's/Init Path/Root Dir/g' /setup.sh
 RUN chmod +x /setup.sh
 
+#njhsi: workaround guest access on os x
+RUN useradd -c "Guest User" -d /dev/null -s /bin/false guest
+RUN (echo ''; echo'') | smbpasswd -a -s guest
+
 ENTRYPOINT      ["/setup.sh"]
