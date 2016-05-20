@@ -1,0 +1,11 @@
+---how to use it
+
+$ docker run --rm \
+       -v /path_to_openwrt_git_root_dir:/openwrt \
+       -v /path_to_download_dir:/dl \
+       njhsi/openwrt_buildroot \
+       make menuconfig             # <<<-- direct operation to command here
+
+
+volumes to give:
+and operations: make -j2 -k,  make package/xxx/compile
