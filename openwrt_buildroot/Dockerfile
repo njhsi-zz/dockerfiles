@@ -14,7 +14,6 @@ RUN		apt-get update && \
 			sudo && \
 			apt-get clean 
 
-RUN mkdir /openwrt
 RUN adduser --disabled-password --gecos '' --shell /bin/bash --home /openwrt buildman
 RUN adduser buildman sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
