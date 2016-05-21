@@ -2,8 +2,8 @@
 #
 #
 FROM		debian:stable
-LABEL		CMDBUILD="docker build -t njhsi/openwrt_buildroot https://raw.githubusercontent.com/njhsi/dockerfiles/master/openwrt_buildroot/Dockerfile"
-LABEL		CMDRUN="docker run njhsi/openwrt_buildroot"
+LABEL		CMDBUILD="docker build -t njhsi/openwrt-buildroot https://raw.githubusercontent.com/njhsi/dockerfiles/master/openwrt-buildroot/Dockerfile"
+LABEL		CMDRUN="docker run njhsi/openwrt-buildroot"
 
 MAINTAINER	njhsi
 
