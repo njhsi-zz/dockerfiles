@@ -1,0 +1,5 @@
+tbd
+===
+
+- publish the service ports to network of the CONTAINER by inspecting it as well as volume
+- provisioned  docker binary in case it not provided

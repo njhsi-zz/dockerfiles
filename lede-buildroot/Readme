@@ -9,3 +9,6 @@ $ docker run --rm \
 
 volumes to give:
 and operations: make -j2 -k,  make package/xxx/compile
+
+tag the changes of sources/configs by taging the container into images
+  - be minimal: take away build_dir and staging_dir

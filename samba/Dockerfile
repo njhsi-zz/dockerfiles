@@ -26,4 +26,8 @@ RUN chmod +x /setup.sh
 RUN useradd -c "Guest User" -d /dev/null -s /bin/false guest
 RUN (echo ''; echo'') | smbpasswd -a -s guest
 
+ENV DOCKER_VERSION 1.11.1
+RUN curl -sSLf https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_VERSION}.tgz | tar -xzvf - 'docker' && chmod +x docker/* && mv docker/* /bin
+RUN rmdir /docker && mv /bin/docker /
+
 ENTRYPOINT      ["/setup.sh"]
