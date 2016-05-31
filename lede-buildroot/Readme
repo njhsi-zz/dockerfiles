@@ -1,14 +1,26 @@
----how to use it
+how to use it
+=============
 
-$ docker run --rm \
-       -v /path_to_openwrt_git_root_dir:/openwrt \
-       -v /path_to_download_dir:/dl \
-       njhsi/openwrt_buildroot \
-       make menuconfig             # <<<-- direct operation to command here
+typically on OS X, I will create 2 volume containers to provsion 2 volumes as lede and lede_. volume lede is to hold the LEDE source codes persistently, and lede_ to hold the building/staging folders and download packages.
+
+$ docker run -v /lede --name lede busybox true
+$ docker run -v /lede_ --name lede_ busybox true
+$ docker run --rm -it  --volumes-from lede --volumes-from lede_  njhsi/lede-buildroot
+   $buildman@38ae0d961a8b:~$ ls -l
+     lrwxrwxrwx  1 buildman buildman    16 May 28 14:18 build_dir -> /lede_/build_dir
+     lrwxrwxrwx  1 buildman buildman     9 May 28 14:18 dl -> /lede_/dl
+        ...
+     lrwxrwxrwx  1 buildman buildman    18 May 28 14:18 staging_dir -> /lede_/staging_dir
+
+to access lede source codes by samba sharing.
+$ docker run --rm -v /var/run/docker.sock:/docker.sock  njhsi/samba lede
+$ mount_smbfs //guest@localhost:/lede ./lede_src
 
 
-volumes to give:
-and operations: make -j2 -k,  make package/xxx/compile
+
+
+tbd
+===
 
 tag the changes of sources/configs by taging the container into images
   - be minimal: take away build_dir and staging_dir
