@@ -1,3 +1,16 @@
+usage example on OS X to share out a samba shre onto OS X host locally
+======================================================================
+
+## create a container vol001_ with a volume vol001 to share on samba
+$ docker run -v /vol001 --name vo1001_ busybox true      
+
+## launch samba to publish the volume by refering its container
+$ docker run --rm -v /var/run/docker.sock:/docker.sock  njhsi/samba vo1001_  
+
+## mount the samba share onto OS X host (using Docker for Mac beta. replace the 'localhost' with dockerIP if using docker toolbox)
+$ mount_smbfs //guest@localhost:/vol001 ./vol001
+
+
 tbd
 ===
 
